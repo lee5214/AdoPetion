@@ -1,0 +1,1 @@
+import React, { Component } from "react";import PropTypes from "prop-types";import { View, Text } from "react-native";class MapScreen extends Component {  render() {    return (      <View>        <Text>MapScreen</Text>      </View>    );  }}MapScreen.propTypes = {};export default MapScreen;
