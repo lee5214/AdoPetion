@@ -1,0 +1,1 @@
+import { combineReducers } from "redux";import auth from "./authReducer";import jobsList from "./jobReducer";export default combineReducers ({  auth,  jobsList,});

@@ -1,16 +1,16 @@
-import React from "react";
-import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  Text,
-  ScrollView,
-  Linking,
-  Button,
-  PanResponder
-} from "react-native";
-import TabNavigator from "./src/components/TabNavigator";
-class App extends React.Component {
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { applyMiddleware, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './src/reducers';
+import { SafeAreaView, StyleSheet } from "react-native";
+import Navigator from "./src/components/Navigator";
+
+const store = createStore (
+  reducers, {}, compose (applyMiddleware (thunk)),
+);
+
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -28,19 +28,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <TabNavigator />
-        {/*<Deck
+      <Provider store={ store }>
+        <SafeAreaView style={ styles.container }>
+          <Navigator/>
+          { /*<Deck
           data={DATA}
           renderCard={this.renderCard}
         />*/}
-      </SafeAreaView>
+        </SafeAreaView>
+      </Provider>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    marginTop : 30,
+    flex : 1,
+    backgroundColor : 'transparent',
   }
 });
 
