@@ -15,7 +15,11 @@ class App extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount() {}
+  componentDidMount() {
+    // disable warning yellow box in devices
+    //TODO should remove when react-native and expo adopt react@16.3
+    console.disableYellowBox = true
+  }
 
   // renderCard = item => {
   //   return (
