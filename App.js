@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { applyMiddleware, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import reducers from './src/reducers';
+import { persistor, store } from "./src/store";
 import { StyleSheet, View } from "react-native";
 import Navigator from "./src/components/Navigator";
-
-const store = createStore (
-  reducers, {}, compose (applyMiddleware (thunk)),
-);
+import { PersistGate } from "redux-persist/integration/react";
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +13,7 @@ class App extends Component {
   componentDidMount() {
     // disable warning yellow box in devices
     //TODO should remove when react-native and expo adopt react@16.3
-    console.disableYellowBox = true
+    console.disableYellowBox = true;
   }
 
   // renderCard = item => {
@@ -32,14 +27,16 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={ store }>
-        <View style={ styles.container }>
-          <Navigator/>
-          { /*<Deck
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <View style={styles.container}>
+            <Navigator />
+            {/*<Deck
           data={DATA}
           renderCard={this.renderCard}
         />*/}
-        </View>
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
@@ -47,8 +44,8 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     //marginTop : 30,  // for other phone  except x
-    flex : 1,
-    backgroundColor : 'transparent',
+    flex: 1,
+    backgroundColor: "transparent"
   }
 });
 
