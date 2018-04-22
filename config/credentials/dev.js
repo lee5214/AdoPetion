@@ -1,0 +1,1 @@
+const config = {  apiKey: "AIzaSyCaPuEO1yi0GCuCX8VFqwVSO7bPy1ZZYdg",  authDomain: "rn-test-8a3b0.firebaseapp.com",  databaseURL: "https://rn-test-8a3b0.firebaseio.com",  projectId: "rn-test-8a3b0",  storageBucket: "rn-test-8a3b0.appspot.com",  messagingSenderId: "131921364279"};module.exports = config
