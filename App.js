@@ -4,8 +4,8 @@ import { persistor, store } from "./src/store";
 import { StyleSheet, Text, View } from "react-native";
 import Navigator from "./src/components/Navigator";
 import { PersistGate } from "redux-persist/integration/react";
-import firebase from "firebase";
-import fireConfig from "./config/credentials";
+
+import { Root } from 'native-base';
 
 class App extends Component {
   constructor(props) {
@@ -14,8 +14,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    firebase.initializeApp(fireConfig);
-    // disable warning yellow box in devices
+    // firebase.initializeApp(fireConfig);
+    // const firestoreSettings = {timestampsInSnapshots:true}
+    // firebase.firestore.settings(firestoreSettings)
+    // // disable warning yellow box in devices
     //TODO should remove when react-native and expo adopt react@16.3
     console.disableYellowBox = true;
   }
@@ -34,7 +36,9 @@ class App extends Component {
       <Provider store={store}>
         <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
           <View style={styles.container}>
+            <Root>
             <Navigator />
+            </Root>
             {/*<Deck
           data={DATA}
           renderCard={this.renderCard}

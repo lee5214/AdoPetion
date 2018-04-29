@@ -1,1 +1,1 @@
-import { combineReducers } from "redux";import auth from "./authReducer";import jobsList from "./jobReducer";import likedJobs from "./likesReducer";export default combineReducers({  auth,  jobsList,  likedJobs});
+import { combineReducers } from "redux";import auth from "./authReducer";import jobsList from "./jobReducer";import likedJobs from "./likesReducer";import petsList from "./petsReducer";import orgsList from "./orgsReducer";export default combineReducers({  auth,  jobsList,  likedJobs,  petsList,  orgsList});

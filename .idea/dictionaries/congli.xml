@@ -5,7 +5,10 @@
       <w>coords</w>
       <w>firebase</w>
       <w>jobkey</w>
+      <w>orgs</w>
       <w>persistor</w>
+      <w>signup</w>
+      <w>singup</w>
     </words>
   </dictionary>
 </component>
