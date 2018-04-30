@@ -1,1 +1,1 @@
-import firebase from "firebase";import "firebase/firestore";import fireConfig from "../../config/credentials";firebase.initializeApp(fireConfig);let db = firebase.firestore();db.settings({ timestampsInSnapshots: true });export default db;
+import firebase from "firebase";import "firebase/firestore";import siteConfig from "../../config/credentials";firebase.initializeApp(siteConfig.firebase);let firestore = firebase.firestore();let firedb = firebase.database();firestore.settings({ timestampsInSnapshots: true });export { firestore, firedb };

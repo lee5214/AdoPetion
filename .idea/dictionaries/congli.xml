@@ -4,6 +4,8 @@
       <w>axios</w>
       <w>coords</w>
       <w>firebase</w>
+      <w>firedb</w>
+      <w>firestore</w>
       <w>jobkey</w>
       <w>orgs</w>
       <w>persistor</w>
