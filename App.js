@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./src/store";
 import { StyleSheet, Text, View } from "react-native";
-import Navigator from "./src/components/Navigator";
+import MainNavigator from "./src/navigation/MainNavigator";
 import { PersistGate } from "redux-persist/integration/react";
 
 import { Root } from 'native-base';
@@ -37,7 +37,7 @@ class App extends Component {
         <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
           <View style={styles.container}>
             <Root>
-            <Navigator />
+            <MainNavigator />
             </Root>
             {/*<Deck
           data={DATA}
