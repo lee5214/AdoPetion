@@ -1,0 +1,1 @@
+const defaultRegion = {  latitude: 37.6,  longitude: -122,  longitudeDelta: 0.04,  latitudeDelta: 0.09};export {defaultRegion}
