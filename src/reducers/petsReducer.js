@@ -1,1 +1,1 @@
-import { FETCH_PETS } from "../actions";export default function(state = {}, action) {  switch (action.type) {    case FETCH_PETS:      console.log('pets reducer ',action.payload)      return action.payload;    default:      return state;  }}
+import { FETCH_PETS_BY_ORG } from "../actions";export default function(state = {}, action) {  switch (action.type) {    case FETCH_PETS_BY_ORG:      //console.log('petsReducer: ',action.payload)      return action.payload;    default:      return state;  }}
