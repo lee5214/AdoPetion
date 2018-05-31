@@ -1,0 +1,1 @@
+import React from 'react';import { Card } from 'react-native-elements';const PetCard = ({props}) => {  return(    <Card title={'yoyo'} source={{uri:props.img}}></Card>  )}export default PetCard

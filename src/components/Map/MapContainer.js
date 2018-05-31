@@ -18,20 +18,15 @@ class MapContainer extends Component {
     };
   }
   onMarkerPress = marker => {
-    this.props.setFocusedOrgID(marker.key);
-    this.props.fetchOrgDetail(marker.key);
-    this.props.fetchPetsByOrg(marker.key);
-    this.focusMarker(marker.key);
+    this.props.onMapMarkPress(marker.key);
+    this.setState({ focusedMarkerID: marker.key });
     this.animateToCoord(marker);
   };
-  focusMarker = markerKey => {
-    this.setState({ focusedMarkerID: markerKey });
-  };
-  animateToCoord= markerData => {
+  animateToCoord = markerData => {
     let coordinate = {
       latitude: markerData.location[0],
       longitude: markerData.location[1]
-    }
+    };
     this.map.animateToCoordinate(coordinate, 500);
   };
   onRegionChangeComplete = region => {
@@ -117,7 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF"
   }
 });
-MapContainer.defaultProps={
-  fetchOrgDetail: function () {}
-}
+MapContainer.defaultProps = {
+  fetchOrgDetail: function() {}
+};
 export default MapContainer;

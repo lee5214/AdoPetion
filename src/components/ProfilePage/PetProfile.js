@@ -1,0 +1,1 @@
+import React from 'react';import { Text, View } from 'react-native';const PetProfile = () => {  return(    <View>      <Text>Yeah</Text>    </View>  )}export default PetProfile
