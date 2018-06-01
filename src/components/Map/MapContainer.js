@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import mapDarkStyle from "../../assets/mapDarkStyle";
 import Marker from "../../components/Map/Marker";
@@ -47,7 +47,7 @@ class MapContainer extends Component {
       orgsDetailList,
       onRegionChangeComplete
     } = this.props;
-    return (
+    return [
       <MapView
         ref={ref => (this.map = ref)}
         style={styles.mapView}
@@ -71,7 +71,6 @@ class MapContainer extends Component {
           strokeColor={"transparent"}
           geodesic={true}
         />
-
         {Object.keys(geoMarkersCurrentSearchResults).map(markerID => {
           let calloutVisible = false;
           let marker = geoMarkersCurrentSearchResults[markerID];
@@ -89,9 +88,12 @@ class MapContainer extends Component {
             />
           );
         })}
+      </MapView>,
+      <View style={{ position: "absolute" }}>
+        {/*children should be siblings of MapView   read: https://github.com/react-community/react-native-maps/issues/1901*/}
         {this.props.children}
-      </MapView>
-    );
+      </View>
+    ];
   }
 }
 
