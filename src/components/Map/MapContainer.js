@@ -30,6 +30,7 @@ class MapContainer extends Component {
     this.map.animateToCoordinate(coordinate, 500);
   };
   onRegionChangeComplete = region => {
+    //console.log(region)
     this.props.updateRegionInScreen(region);
     this.setState({ region: region, focusedMarkerID: null });
   };
@@ -53,11 +54,12 @@ class MapContainer extends Component {
         ref={ref => (this.map = ref)}
         style={styles.mapView}
         //showsMyLocationButton={true}
-        loadingEnabled={true}
+        //loadingEnabled={true}
         moveOnMarkerPress={true}
-        minZoomLevel={4}
+        minZoomLevel={8}
         customMapStyle={mapDarkStyle}
         provider={"google"}
+        //region={this.state.region}
         initialRegion={defaultRegion}
         onRegionChangeComplete={this.onRegionChangeComplete}
         //onMapReady={this.onMapReady}

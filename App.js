@@ -5,8 +5,6 @@ import { StyleSheet, Text, View } from "react-native";
 import MainNavigator from "./src/navigation/MainNavigator";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { Root } from 'native-base';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,9 +34,7 @@ class App extends Component {
       <Provider store={store}>
         <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
           <View style={styles.container}>
-            <Root>
             <MainNavigator />
-            </Root>
             {/*<Deck
           data={DATA}
           renderCard={this.renderCard}
