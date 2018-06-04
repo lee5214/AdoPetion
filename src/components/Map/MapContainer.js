@@ -50,7 +50,7 @@ class MapContainer extends Component {
     } = this.props;
     return [
       <MapView
-        key={'MapViewContainer'}
+        key={"MapViewContainer"}
         ref={ref => (this.map = ref)}
         style={styles.mapView}
         //showsMyLocationButton={true}
@@ -92,7 +92,7 @@ class MapContainer extends Component {
           );
         })}
       </MapView>,
-      <View key={'MapViewChildrenContainer'} style={{ position: "absolute" }}>
+      <View key={"MapViewChildrenContainer"} style={{ position: "absolute" }}>
         {/*children should be siblings of MapView   read: https://github.com/react-community/react-native-maps/issues/1901*/}
         {this.props.children}
       </View>
