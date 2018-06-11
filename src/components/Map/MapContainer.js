@@ -14,14 +14,23 @@ class MapContainer extends Component {
     super(props);
     this.state = {
       focusedMarkerID: null,
-      region: defaultRegion
+      region: defaultRegion,
+      focusedOrg: {}
     };
   }
-  onMarkerPress = marker => {
-    this.props.onMapMarkPress(marker.key);
-    this.setState({ focusedMarkerID: marker.key });
-    this.animateToCoord(marker);
+  static getDerivedStateFromProps(props, state) {
+    if (props.orgsDetailList && props.orgsDetailList.list[state.focusedMarkerID]) {
+      return { focusedOrg: props.orgsDetailList.list[state.focusedMarkerID] };
+    }
+    return null;
+  }
+
+  onMarkerPress = returnedMarkerCoord => {
+    this.props.onMapMarkPress(returnedMarkerCoord.key);
+    this.setState({ focusedMarkerID: returnedMarkerCoord.key, focusedOrg: {} });
+    this.animateToCoord(returnedMarkerCoord);
   };
+
   animateToCoord = markerData => {
     let coordinate = {
       latitude: markerData.location[0],
@@ -32,22 +41,15 @@ class MapContainer extends Component {
   onRegionChangeComplete = region => {
     //console.log(region)
     this.props.updateRegionInScreen(region);
-    this.setState({ region: region, focusedMarkerID: null });
+    this.setState({ region: region, focusedMarkerID: -1 });
   };
   onMapReady = () => {
     //Platform.OS === 'ios' && this.map.animateToRegion(defaultRegion, 0.1);
   };
   // clear focus so that when user click on map to remove callout and drag around, the callout will not render again
-  onDeselectMarker = () => {
-    this.setState({ focusedMarkerID: null });
-  };
   render() {
-    let {
-      geoMarkersCurrentSearchResults,
-      radius,
-      orgsDetailList,
-      onRegionChangeComplete
-    } = this.props;
+    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete } = this.props;
+    let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
     return [
       <MapView
         key={"MapViewContainer"}
@@ -72,25 +74,26 @@ class MapContainer extends Component {
           radius={1000 * radius} //in meters
           fillColor={"rgba(255,255,255,0.5)"}
           strokeColor={"transparent"}
-          geodesic={true}
+          //geodesic={true}
         >
-          <Image style={{height:30,width:30}}source={require('../../assets/paw.png')}/>
+          <Image style={{ height: 30, width: 30 }} source={require("../../assets/paw.png")} />
         </MapView.Circle>
 
         {Object.keys(geoMarkersCurrentSearchResults).map(markerID => {
           let calloutVisible = false;
-          let marker = geoMarkersCurrentSearchResults[markerID];
-          if (marker.key === this.state.focusedMarkerID && orgsDetailList[this.state.focusedMarkerID]) {
-            console.log('container/calloutvisible')
+          let geoMarker = geoMarkersCurrentSearchResults[markerID];
+          if (markerID === this.state.focusedMarkerID) {
+            console.log("container/calloutvisible");
             calloutVisible = true;
           }
           return (
             <Marker
-              key={`marker-${marker.key}`}
-              marker={marker}
+              key={`marker-${geoMarker.key}`}
+              focusedMarkerID={this.state.focusedMarkerID}
+              geoMarker={geoMarker}
+              focusedOrg={markerID === this.state.focusedMarkerID ? this.state.focusedOrg : null}
               orgsDetailList={orgsDetailList}
               onMarkerPress={this.onMarkerPress}
-              onDeselectMarker={this.onDeselectMarker}
               calloutVisible={calloutVisible}
             />
           );
@@ -121,6 +124,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF"
   }
 });
-MapContainer.defaultProps = {
-};
+MapContainer.defaultProps = {};
 export default MapContainer;
