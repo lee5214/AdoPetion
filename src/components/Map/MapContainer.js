@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import mapDarkStyle from "../../assets/mapDarkStyle";
 import Marker from "../../components/Map/Marker";
@@ -70,14 +70,18 @@ class MapContainer extends Component {
             longitude: this.state.region.longitude
           }}
           radius={1000 * radius} //in meters
-          fillColor={"rgba(114,255,250,0.5)"}
+          fillColor={"rgba(255,255,255,0.5)"}
           strokeColor={"transparent"}
           geodesic={true}
-        />
+        >
+          <Image style={{height:30,width:30}}source={require('../../assets/paw.png')}/>
+        </MapView.Circle>
+
         {Object.keys(geoMarkersCurrentSearchResults).map(markerID => {
           let calloutVisible = false;
           let marker = geoMarkersCurrentSearchResults[markerID];
-          if (marker.key === this.state.focusedMarkerID) {
+          if (marker.key === this.state.focusedMarkerID && orgsDetailList[this.state.focusedMarkerID]) {
+            console.log('container/calloutvisible')
             calloutVisible = true;
           }
           return (
@@ -118,6 +122,5 @@ const styles = StyleSheet.create({
   }
 });
 MapContainer.defaultProps = {
-  fetchOrgDetail: function() {}
 };
 export default MapContainer;

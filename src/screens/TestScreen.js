@@ -1,1 +1,1 @@
-import Apple from './TestScreen-Apple';export default Apple
+import Test from './Test-Ani2';export default Test
