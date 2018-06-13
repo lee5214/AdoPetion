@@ -48,7 +48,7 @@ class MapContainer extends Component {
   };
   // clear focus so that when user click on map to remove callout and drag around, the callout will not render again
   render() {
-    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete } = this.props;
+    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete,...rest } = this.props;
     let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
     return [
       <MapView
@@ -65,6 +65,7 @@ class MapContainer extends Component {
         initialRegion={defaultRegion}
         onRegionChangeComplete={this.onRegionChangeComplete}
         //onMapReady={this.onMapReady}
+        {...rest}
       >
         <MapView.Circle
           center={{
@@ -83,7 +84,6 @@ class MapContainer extends Component {
           let calloutVisible = false;
           let geoMarker = geoMarkersCurrentSearchResults[markerID];
           if (markerID === this.state.focusedMarkerID) {
-            console.log("container/calloutvisible");
             calloutVisible = true;
           }
           return (
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     backgroundColor: "#007AFF"
-  }
+  },
+
 });
 MapContainer.defaultProps = {};
 export default MapContainer;
