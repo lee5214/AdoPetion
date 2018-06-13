@@ -1,1 +1,1 @@
-const LIKE_PET = "likePet";const likePet = pet => {  return {    type: LIKE_PET,    payload: pet  };};export {LIKE_PET,likePet}
+const LIKE_PET = "likePet";const likePet = pet => {  return {    type: LIKE_PET,    payload: pet  };};const CLEAR_LIKED_PETS = "clearLikedPets";const clearLikedPets = () => {  return {    type: CLEAR_LIKED_PETS,    payload: []  };};export {LIKE_PET,likePet,CLEAR_LIKED_PETS,clearLikedPets}

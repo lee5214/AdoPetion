@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import mapDarkStyle from "../../assets/mapDarkStyle";
 import Marker from "../../components/Map/Marker";
@@ -77,7 +77,7 @@ class MapContainer extends Component {
           strokeColor={"transparent"}
           //geodesic={true}
         >
-          <Image style={{ height: 30, width: 30 }} source={require("../../assets/paw.png")} />
+          {/*<Image style={{ height: 30, width: 30 }} source={require("../../assets/paw.png")} />*/}
         </MapView.Circle>
 
         {Object.keys(geoMarkersCurrentSearchResults).map(markerID => {
