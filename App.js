@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from "react-native";
 import MainNavigator from "./src/navigation/MainNavigator";
 import { PersistGate } from "redux-persist/integration/react";
 
+//import { defaultColorTheme } from "config/setting/defaultValues";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     //marginTop : 30,  // for other phone  except x
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: '#0f6b79'//defaultColorTheme.appBackgroundColor
   }
 });
 

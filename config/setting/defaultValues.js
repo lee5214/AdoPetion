@@ -1,1 +1,1 @@
-const defaultRegion = {  latitude: 37.6,  longitude: -122,  latitudeDelta: 1.28,  longitudeDelta: 0.83,};export {defaultRegion}
+const defaultRegion = {  latitude: 37.6,  longitude: -122,  latitudeDelta: 1.28,  longitudeDelta: 0.83,};const defaultColorTheme = {  appBackgroundColor: '#0f6b79'}export {defaultRegion, defaultColorTheme}
