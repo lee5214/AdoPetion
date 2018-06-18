@@ -56,7 +56,7 @@ class MapContainer extends Component {
         ref={ref => (this.map = ref)}
         style={styles.mapView}
         //showsMyLocationButton={true}
-        //loadingEnabled={true}
+        loadingEnabled={true}
         moveOnMarkerPress={true}
         minZoomLevel={8}
         customMapStyle={mapDarkStyle}
