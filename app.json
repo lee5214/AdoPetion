@@ -1,10 +1,12 @@
 {
   "expo": {
     "name": "adopeter",
-    //"icon": "./path/to/your/app-icon.png",
+    "icon": "./src/assets/paw.png",
     "version": "1.0.0",
     "slug": "expo.io/@lee5214/adopeter",
-    "sdkVersion": "26.0.0"
-
+    "sdkVersion": "26.0.0",
+    "ios": {
+      "bundleIdentifier": "com.congli.adopeter"
+    }
   }
 }
