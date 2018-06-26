@@ -1,5 +1,9 @@
 {
   "expo": {
+    "name": "adopeter",
+    //"icon": "./path/to/your/app-icon.png",
+    "version": "1.0.0",
+    "slug": "expo.io/@lee5214/adopeter",
     "sdkVersion": "26.0.0"
 
   }

@@ -26,21 +26,24 @@
     "expo": "^26.0.0",
     "firebase": "^4.13.1",
     "geofire": "^4.1.2",
+    "lodash": "^4.17.10",
     "native-base": "^2.4.3",
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.2",
     "react-native-elements": "^1.0.0-beta4",
+    "react-native-image-zoom-viewer": "^2.2.6",
     "react-native-maps": "^0.21.0",
+    "react-native-snap-carousel": "^3.7.0",
     "react-native-vector-icons": "^4.6.0",
-    "react-navigation": "^1.5.11",
+    "react-navigation": "^2.3.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0"
   },
-  "prettier":{
-    "printWidth": 200,
+  "prettier": {
+    "printWidth": 140,
     "parser": "flow"
   }
 }

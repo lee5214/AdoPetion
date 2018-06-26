@@ -10,6 +10,7 @@
 /config/credentials/dev.js
 
 # etc
+app.json
 .idea/workspace.xml
 package-lock.json
 .DS_Store
