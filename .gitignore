@@ -2,6 +2,7 @@
 
 # expo
 .expo/
+app.json
 
 # dependencies
 /node_modules
@@ -10,7 +11,6 @@
 /config/credentials/dev.js
 
 # etc
-app.json
 .idea/workspace.xml
 package-lock.json
 .DS_Store
