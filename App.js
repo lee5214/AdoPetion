@@ -8,11 +8,6 @@ import { PersistGate } from "redux-persist/integration/react";
 //import { defaultColorTheme } from "config/setting/defaultValues";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount() {
     // firebase.initializeApp(fireConfig);
     // const firestoreSettings = {timestampsInSnapshots:true}
@@ -21,15 +16,6 @@ class App extends Component {
     //TODO should remove when react-native and expo adopt react@16.3
     console.disableYellowBox = true;
   }
-
-  // renderCard = item => {
-  //   return (
-  //     <Card key={item.id} title={item.title} image={{ uri: item.uri }}>
-  //       <Text>{item.text}</Text>
-  //       <Button icon={{ name: "code" }} title="wOw" onPress={() => {}} />
-  //     </Card>
-  //   );
-  // };
 
   render() {
     return (
@@ -51,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     //marginTop : 30,  // for other phone  except x
     flex: 1,
-    backgroundColor: '#0f6b79'//defaultColorTheme.appBackgroundColor
+    backgroundColor: 'tomato'//'#0f6b79'//defaultColorTheme.appBackgroundColor
   }
 });
 
