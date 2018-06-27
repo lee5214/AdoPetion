@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "adopeter",
-    "icon": "./src/assets/paw.png",
+    "name": "AdoPetion",
+    "icon": "./src/assets/pet-logo-test.png",
     "version": "1.0.0",
-    "slug": "expo.io/@lee5214/adopeter",
+    //"slug": "expo.io/@lee5214/AdoPet",
     "sdkVersion": "26.0.0",
     "ios": {
-      "bundleIdentifier": "com.congli.adopeter"
+      "bundleIdentifier": "com.congli.AdoPetion"
     }
   }
 }
