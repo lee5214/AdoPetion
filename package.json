@@ -31,6 +31,7 @@
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.2",
+    "react-native-app-intro-slider": "^0.2.4",
     "react-native-elements": "^1.0.0-beta4",
     "react-native-image-zoom-viewer": "^2.2.6",
     "react-native-maps": "^0.21.0",
