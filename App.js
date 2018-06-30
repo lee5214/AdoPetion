@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     //marginTop : 30,  // for other phone  except x
     flex: 1,
-    backgroundColor: 'tomato'//'#0f6b79'//defaultColorTheme.appBackgroundColor
+    backgroundColor: '#0f6b79'//defaultColorTheme.appBackgroundColor
   }
 });
 
