@@ -16,7 +16,6 @@ class MapContainer extends Component {
       focusedMarkerID: null,
       region: defaultRegion,
       focusedOrg: {},
-      currentP: null
     };
   }
   static getDerivedStateFromProps(props, state) {
@@ -31,13 +30,14 @@ class MapContainer extends Component {
       const longitude = pos.coords.longitude;
       const latitude = pos.coords.latitude;
       this.setState({
-        currentP: {
+        region: {
           latitude,
           longitude,
           latitudeDelta: 0.4,
           longitudeDelta: 0.4
         }
       });
+      console.log(latitude,longitude)
       this.map.animateToCoordinate({ latitude, longitude }, 500);
     });
   }
@@ -62,8 +62,8 @@ class MapContainer extends Component {
   };
   // clear focus so that when user click on map to remove callout and drag around, the callout will not render again
   render() {
-    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete, ...rest } = this.props;
-    let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
+    let { geoMarkersCurrentSearchResults, radius, orgsDetailList,onRegionChangeComplete, ...rest } = this.props;
+    //let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
     return [
       <MapView
         key={"MapViewContainer"}
@@ -75,7 +75,7 @@ class MapContainer extends Component {
         customMapStyle={mapDarkStyle}
         provider={"google"}
         //region={this.state.region}
-        initialRegion={this.state.currentP}
+        initialRegion={this.state.region}
         onRegionChangeComplete={this.onRegionChangeComplete}
         //onMapReady={this.onMapReady}
         {...rest}
