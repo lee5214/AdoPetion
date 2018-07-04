@@ -1,0 +1,1 @@
+import React, { Component } from "react";import { View } from "react-native";import OrgDetail from "../../components/Common/OrgDetail";class ReviewDetail extends Component {  render() {    return (      <View style={{ flex: 1, marginTop: 0}}>        <OrgDetail orgID={this.props.navigation.state.params.orgID} />      </View>    );  }}export default ReviewDetail;

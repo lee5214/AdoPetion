@@ -15,7 +15,8 @@ class MapContainer extends Component {
     this.state = {
       focusedMarkerID: null,
       region: defaultRegion,
-      focusedOrg: {}
+      focusedOrg: {},
+      currentP: null
     };
   }
   static getDerivedStateFromProps(props, state) {
@@ -23,6 +24,22 @@ class MapContainer extends Component {
       return { focusedOrg: props.orgsDetailList.list[state.focusedMarkerID] };
     }
     return null;
+  }
+  componentDidMount() {
+    //current position
+    navigator.geolocation.getCurrentPosition(pos => {
+      const longitude = pos.coords.longitude;
+      const latitude = pos.coords.latitude;
+      this.setState({
+        currentP: {
+          latitude,
+          longitude,
+          latitudeDelta: 0.4,
+          longitudeDelta: 0.4
+        }
+      });
+      this.map.animateToCoordinate({ latitude, longitude }, 500);
+    });
   }
 
   onMarkerPress = returnedMarkerCoord => {
@@ -43,26 +60,22 @@ class MapContainer extends Component {
     this.props.updateRegionInScreen(region);
     this.setState({ region: region, focusedMarkerID: -1 });
   };
-  onMapReady = () => {
-    //Platform.OS === 'ios' && this.map.animateToRegion(defaultRegion, 0.1);
-  };
   // clear focus so that when user click on map to remove callout and drag around, the callout will not render again
   render() {
-    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete,...rest } = this.props;
+    let { geoMarkersCurrentSearchResults, radius, orgsDetailList, onRegionChangeComplete, ...rest } = this.props;
     let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
     return [
       <MapView
         key={"MapViewContainer"}
         ref={ref => (this.map = ref)}
         style={styles.mapView}
-        //showsMyLocationButton={true}
         loadingEnabled={true}
-        moveOnMarkerPress={true}
+        //moveOnMarkerPress={true}
         minZoomLevel={8}
         customMapStyle={mapDarkStyle}
         provider={"google"}
         //region={this.state.region}
-        initialRegion={defaultRegion}
+        initialRegion={this.state.currentP}
         onRegionChangeComplete={this.onRegionChangeComplete}
         //onMapReady={this.onMapReady}
         {...rest}
@@ -122,8 +135,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     backgroundColor: "#007AFF"
-  },
-
+  }
 });
 MapContainer.defaultProps = {};
 export default MapContainer;
