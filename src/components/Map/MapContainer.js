@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
-import mapDarkStyle from "../../assets/mapDarkStyle";
+import mapDarkStyle from "../../assets/mapLightStyle";
 import Marker from "../../components/Map/Marker";
 import { defaultRegion } from "../../../config/setting/defaultValues";
 
@@ -16,10 +16,15 @@ class MapContainer extends Component {
       focusedMarkerID: null,
       region: defaultRegion,
       focusedOrg: {},
+      initialRegion: defaultRegion,
+      customMap: false
     };
   }
   static getDerivedStateFromProps(props, state) {
-    if (props.orgsDetailList && props.orgsDetailList.list[state.focusedMarkerID]) {
+    if (
+      props.orgsDetailList &&
+      props.orgsDetailList.list[state.focusedMarkerID]
+    ) {
       return { focusedOrg: props.orgsDetailList.list[state.focusedMarkerID] };
     }
     return null;
@@ -30,14 +35,14 @@ class MapContainer extends Component {
       const longitude = pos.coords.longitude;
       const latitude = pos.coords.latitude;
       this.setState({
-        region: {
+        initialRegion: {
           latitude,
           longitude,
-          latitudeDelta: 0.4,
-          longitudeDelta: 0.4
+          latitudeDelta: 0.8,
+          longitudeDelta: 0.6
         }
       });
-      console.log(latitude,longitude)
+      console.log(latitude, longitude);
       this.map.animateToCoordinate({ latitude, longitude }, 500);
     });
   }
@@ -62,22 +67,25 @@ class MapContainer extends Component {
   };
   // clear focus so that when user click on map to remove callout and drag around, the callout will not render again
   render() {
-    let { geoMarkersCurrentSearchResults, radius, orgsDetailList,onRegionChangeComplete, ...rest } = this.props;
+    let {
+      geoMarkersCurrentSearchResults,
+      radius,
+      orgsDetailList,
+      ...rest
+    } = this.props;
     //let focusedOrgDetail = orgsDetailList.list[this.state.focusedMarkerID];
-    return [
+    return (
       <MapView
         key={"MapViewContainer"}
         ref={ref => (this.map = ref)}
         style={styles.mapView}
-        loadingEnabled={true}
+        //loadingEnabled={true}
         //moveOnMarkerPress={true}
         minZoomLevel={8}
-        customMapStyle={mapDarkStyle}
+        customMapStyle={this.state.customMap ? mapDarkStyle : null}
         provider={"google"}
-        //region={this.state.region}
-        initialRegion={this.state.region}
+        initialRegion={this.state.initialRegion}
         onRegionChangeComplete={this.onRegionChangeComplete}
-        //onMapReady={this.onMapReady}
         {...rest}
       >
         <MapView.Circle
@@ -86,7 +94,7 @@ class MapContainer extends Component {
             longitude: this.state.region.longitude
           }}
           radius={1000 * radius} //in meters
-          fillColor={"rgba(255,255,255,0.5)"}
+          fillColor={this.state.customMap?"rgba(100,100,100,0.5)":'rgba(100,100,100,.5)'}
           strokeColor={"transparent"}
           //geodesic={true}
         >
@@ -104,19 +112,19 @@ class MapContainer extends Component {
               key={`marker-${geoMarker.key}`}
               focusedMarkerID={this.state.focusedMarkerID}
               geoMarker={geoMarker}
-              focusedOrg={markerID === this.state.focusedMarkerID ? this.state.focusedOrg : null}
+              focusedOrg={
+                markerID === this.state.focusedMarkerID
+                  ? this.state.focusedOrg
+                  : null
+              }
               orgsDetailList={orgsDetailList}
               onMarkerPress={this.onMarkerPress}
               calloutVisible={calloutVisible}
             />
           );
         })}
-      </MapView>,
-      <View key={"MapViewChildrenContainer"} style={{ position: "absolute" }}>
-        {/*children should be siblings of MapView   read: https://github.com/react-community/react-native-maps/issues/1901*/}
-        {this.props.children}
-      </View>
-    ];
+      </MapView>
+    );
   }
 }
 
@@ -137,5 +145,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF"
   }
 });
-MapContainer.defaultProps = {};
 export default MapContainer;

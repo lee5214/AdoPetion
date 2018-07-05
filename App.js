@@ -1,3 +1,7 @@
+if (!__DEV__) {
+  console.log = () => {};
+}
+
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./src/store";

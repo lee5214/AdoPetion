@@ -1,1 +1,1 @@
-import DevKeys from "./dev";module.exports = DevKeys//process.env.NODE_ENV === "production" ? null : DevKeys;
+import DevKeys from "./dev";module.exports = DevKeys//process.env.NODE_ENV === "production" ? null : DevKeys;export default DevKeys
