@@ -5,7 +5,7 @@ if (!__DEV__) {
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./src/store";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import MainNavigator from "./src/navigation/MainNavigator";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -25,6 +25,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
+          <StatusBar
+            backgroundColor="blue"
+            barStyle="dark-content"
+          />
           <View style={styles.container}>
             <MainNavigator />
             {/*<Deck

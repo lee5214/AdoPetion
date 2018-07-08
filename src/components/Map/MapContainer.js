@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
-import mapDarkStyle from "../../assets/mapLightStyle";
 import Marker from "../../components/Map/Marker";
 import { defaultRegion } from "../../../config/setting/defaultValues";
 
@@ -34,15 +33,14 @@ class MapContainer extends Component {
     navigator.geolocation.getCurrentPosition(pos => {
       const longitude = pos.coords.longitude;
       const latitude = pos.coords.latitude;
-      this.setState({
+      /*this.setState({
         initialRegion: {
           latitude,
           longitude,
           latitudeDelta: 0.8,
           longitudeDelta: 0.6
         }
-      });
-      console.log(latitude, longitude);
+      });*/
       this.map.animateToCoordinate({ latitude, longitude }, 500);
     });
   }
@@ -79,10 +77,12 @@ class MapContainer extends Component {
         key={"MapViewContainer"}
         ref={ref => (this.map = ref)}
         style={styles.mapView}
-        //loadingEnabled={true}
+        // loadingEnabled={true}
+        // loadingIndicatorColor={'red'}
+        // loadingBackgroundColor={'green'}
         //moveOnMarkerPress={true}
         minZoomLevel={8}
-        customMapStyle={this.state.customMap ? mapDarkStyle : null}
+        //customMapStyle={this.state.customMap ? mapDarkStyle : mapLightStyle}
         provider={"google"}
         initialRegion={this.state.initialRegion}
         onRegionChangeComplete={this.onRegionChangeComplete}
