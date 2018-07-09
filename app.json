@@ -1,13 +1,20 @@
 {
   "expo": {
     "name": "AdoPetion",
-    "icon": "./src/assets/pet-logo-test.png",
+    "description":
+      "This is a 100% free, non-profit app that help both you and your dream pet meet each other.",
+    "icon": "./src/assets/images/appIcon.png",
     "version": "1.0.0",
-    //"slug": "expo.io/@lee5214/AdoPet",
+    //"slug": "expo.io/@lee5214/adopetion",
     "sdkVersion": "26.0.0",
     "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.congli.AdoPetion"
+    },
+    "githubUrl": "https://github.com/lee5214/AdoPetion",
+    "splash": {
+      "resizeMode": "cover",
+      "image": "./src/assets/images/appIcon.png"
     }
   }
 }

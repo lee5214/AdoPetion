@@ -5,7 +5,7 @@ if (!__DEV__) {
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./src/store";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, View } from "react-native";
 import MainNavigator from "./src/navigation/MainNavigator";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -24,11 +24,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
-          <StatusBar
-            backgroundColor="blue"
-            barStyle="dark-content"
-          />
+        <PersistGate persistor={persistor}>
+          <StatusBar barStyle="dark-content" />
           <View style={styles.container}>
             <MainNavigator />
             {/*<Deck
@@ -45,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     //marginTop : 30,  // for other phone  except x
     flex: 1,
-    backgroundColor: '#0f6b79'//defaultColorTheme.appBackgroundColor
+    backgroundColor: "#0f6b79" //defaultColorTheme.appBackgroundColor
   }
 });
 
