@@ -8,7 +8,7 @@ app.json
 /node_modules
 
 # credentials
-/config/credentials/dev.js
+/config/credentials
 
 # etc
 .idea/workspace.xml
