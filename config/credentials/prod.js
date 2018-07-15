@@ -1,0 +1,1 @@
+const config = {  firebase: {    apiKey: "AIzaSyAwdzHegZ5pcpsvDpP4hGYsk5DLu3ZF6HI",    authDomain: "adopetion-e1670.firebaseapp.com",    databaseURL: "https://adopetion-e1670.firebaseio.com",    projectId: "adopetion-e1670",    storageBucket: "adopetion-e1670.appspot.com",    messagingSenderId: "349464244453"  },};module.exports = config;

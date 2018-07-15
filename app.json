@@ -3,17 +3,24 @@
     "name": "AdoPetion",
     "description":
       "This is a 100% free, non-profit app that help both you and your dream pet meet each other.",
-    "icon": "./src/assets/images/AdoPetion-Icon-noName-1024.png",
-    "version": "1.0.1",
+    "icon": "./src/assets/images/App-Icon-noName-1024.png",
+    "version": "1.1.0",
     "sdkVersion": "26.0.0",
     "orientation": "portrait",
     "ios": {
-      "bundleIdentifier": "com.congli.AdoPetion"
+      "supportsTablet": true,
+      "bundleIdentifier": "com.congli.AdoPetion",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription":
+          "Your current location will be used for search area display, distance calculation, and explore results",
+        "NSLocationAlwaysUsageDescription":
+          "Your current location will be used for search area display, distance calculation, and explore results"
+      }
     },
     "githubUrl": "https://github.com/lee5214/AdoPetion",
     "splash": {
       "resizeMode": "cover",
-      "image": "./src/assets/images/AdoPetion-Icon-withName-1024.png"
+      "image": "./src/assets/images/App-Icon-withName-1024.png"
     }
   }
 }
