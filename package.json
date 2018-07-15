@@ -1,6 +1,6 @@
 {
-  "name": "rn-app",
-  "version": "0.1.0",
+  "name": "AdoPetion",
+  "version": "1.0.0",
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "install": "^0.11.0",
