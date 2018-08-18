@@ -1,6 +1,6 @@
 AdoPetion
 ==============
-[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/lee5214/AdoPetion/master/LICENSE)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/lee5214/AdoPetion/blob/master/LICENSE)
 
 ### Description
 This is a 100% free and non-profit app that help both you and your dream pet meet each other. 
