@@ -1,6 +1,7 @@
 {
   "name": "AdoPetion",
   "version": "1.0.0",
+  "repository": "github:lee5214/AdoPetion",
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "install": "^0.11.0",
