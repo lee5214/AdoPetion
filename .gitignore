@@ -14,3 +14,9 @@ app.json
 .idea/workspace.xml
 package-lock.json
 .DS_Store
+.buckconfig
+.gitattributes
+.watchmanconfig
+__tests__/
+android/
+ios/
